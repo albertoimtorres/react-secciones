@@ -1,16 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+
+import { Sections } from './Sections';
+
 import reportWebVitals from './reportWebVitals';
-import Sections from './components/sections';
 
 ReactDOM.render(
   <React.StrictMode>
-    {/* <App /> */}
-    <Sections>
-      
-    </Sections>
+    <Sections />
   </React.StrictMode>,
   document.getElementById('root')
 );
