@@ -34,7 +34,7 @@ export const Modal = ({ onClose, show, catalog: {catalogo}, callback, setCatalog
 
                 <div className="modal-body">
 
-                    <table>
+                    <table className="sections">
                         <thead>
                             <tr>
                                 { headers.map(header => (<th key={ header }>{ header.toUpperCase() }</th>)) }

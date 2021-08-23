@@ -28,7 +28,57 @@ select option {
 .table-container {
   padding: 1.2rem;
   margin: 10px;
+
 }
+
+/* Table style */
+.sections {
+  border: 1px solid #fff;
+  border-collapse: collapse;
+  border-style: hidden;
+  margin: auto;
+  width: 600px;
+}
+
+.sections caption {
+  background-color: #f79646;
+  color: #fff;
+  font-size: x-large;
+  font-weight: bold;
+  letter-spacing: .3em;
+}
+
+.sections thead th {
+  background-color: #fde9d9;
+  font-size: large;
+  padding: 8px;
+  text-align: center;
+}
+
+.sections td {
+  text-align: center;
+}
+
+.sections tr {
+  border-width: 1px;
+  border-style: solid;
+  border-color: #f79646 #ccc;
+  padding: 3px;
+}
+
+.sections tbody th {
+  text-align: left;
+  font-weight: normal;
+}
+
+.sections tbody tr:nth-child(odd) {
+  background-color: #fde9d9;
+}
+
+.sections .label {
+  float: left;
+}
+/* Table */
 
 .modal {
   align-items: center;
@@ -43,8 +93,10 @@ select option {
 }
 
 .modal-content {
-  width: 500px;
   background-color: #fff;
+  height: 300px;
+  position: relative;
+  width: 500px;
 }
 
 .modal-header {
@@ -60,11 +112,23 @@ select option {
 }
 
 .modal-body {
-  padding: 10px;
   border-top: 1px solid #eee;
   border-radius: 1px solid #eee;
+  padding: 10px;
 }
 
 button {
   margin: 10px;
+}
+
+.success {
+  background-color: #90bf21;
+  border-radius: 15px;
+  border-color: transparent;
+  color: white;
+  font-size: 15px;
+  float: right;
+  height: 30px;
+  text-align: center;
+  width: 100px;
 }

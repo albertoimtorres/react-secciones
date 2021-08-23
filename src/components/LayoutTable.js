@@ -8,6 +8,8 @@ export const LayoutTable = ({ sections }) => {
 
     const [catalog, setCatalog] = useState({});
 
+    const [Asection, setSections] = useState([]);
+
     const [show, setShow] = useState(false);
 
     const reference = useRef(null);
@@ -27,40 +29,50 @@ export const LayoutTable = ({ sections }) => {
             }
 
         } else {
-            console.log('NO TIENE LA LLAVE');
+
+            const {etiqueta, obligatorio, ...rest} = section;
+
+            if (!checked) {
+                const index = Asection.findIndex(element => element.id_campo === rest.id_campo);
+                setSections([...Asection.slice(0, index), ...Asection.slice(index + 1, Asection.length)]);
+            }
+
+            setSections(element => [rest, ...element]);
         }
     }
 
     const handleAccept = (catalog) => {
-        console.log('CALLBACK: ', catalog);
+
     }
 
-    // const handleRef = () => {
-    //     console.log('¿ENTRA EN HANDLE REF?');
-    //     // reference.current = 'section_' + section.id_campo;
-    // }
+    const onSubmit = () => {
+    }
 
     return (
         <div className="table-container">
-            <table>
-                <thead>
-                    <tr>
-                        { headers.map(header => (<th key={ header }>{ header.toUpperCase() }</th>)) }
-                    </tr>
-                </thead>
-                <tbody>
-                    {
-                        sections.map((section, index) => (
-                            <tr key={ section.id_campo }>
-                                <td>{ index + 1 }</td>
-                                <td>{section.id_campo}</td>
-                                <td> <input type='checkbox' id={`section_${section.id_campo}`} reference={`section_${section.id_campo}`} onChange={ handleOnChange.bind(this, section) } /> </td>
-                                <td>{section.etiqueta}</td>
-                            </tr>
-                        ))
-                    }
-                </tbody>
-            </table>
+            <form>
+                <table className="sections">
+                    <caption>Secciones</caption>
+                    <thead>
+                        <tr>
+                            { headers.map(header => (<th key={ header }>{ header.toUpperCase() }</th>)) }
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            sections.map((section, index) => (
+                                <tr id={index} key={ section.id_campo }>
+                                    <td>{ index + 1 }</td>
+                                    <td>{section.id_campo}</td>
+                                    <td> <input type='checkbox' id={`section_${section.id_campo}`} reference={`section_${section.id_campo}`} onChange={ handleOnChange.bind(this, section) } /> </td>
+                                    <td className="label">{section.etiqueta}</td>
+                                </tr>
+                            ))
+                        }
+                    </tbody>
+                </table>
+                <button onClick={ onSubmit } className="success">Enviar</button>
+            </form>
             <Modal onClose={() => setShow(false)} show={show} catalog={catalog} callback={ handleAccept } setCatalog={ setCatalog } reference={reference} />
         </div>
     )
