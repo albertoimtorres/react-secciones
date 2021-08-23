@@ -54,7 +54,7 @@ export const LayoutTable = ({ sections }) => {
                             <tr key={ section.id_campo }>
                                 <td>{ index + 1 }</td>
                                 <td>{section.id_campo}</td>
-                                <td> <input type='checkbox' reference={`section_${section.id_campo}`} onChange={ handleOnChange.bind(this, section) } /> </td>
+                                <td> <input type='checkbox' id={`section_${section.id_campo}`} reference={`section_${section.id_campo}`} onChange={ handleOnChange.bind(this, section) } /> </td>
                                 <td>{section.etiqueta}</td>
                             </tr>
                         ))

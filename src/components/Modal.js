@@ -22,6 +22,9 @@ export const Modal = ({ onClose, show, catalog: {catalogo}, callback, setCatalog
         }
     }
 
+    //! Deschequea el checkbox
+    const unChecked = id => document.getElementById(id).checked = false;
+
     return (
         <div className="modal">
             <div className="modal-content">
@@ -57,10 +60,14 @@ export const Modal = ({ onClose, show, catalog: {catalogo}, callback, setCatalog
                 <div className="modal-footer">
                     <button onClick={ () => {
 
-                        if (!catalogs.length) console.log(reference.checked, catalogs); // reference.checked = !reference.checked;
-                        else console.log(reference, catalogs); // reference.checked = !reference.checked;
+                        if (!catalogs.length) {
+                            unChecked(reference.current);
+                        } else {
+                            unChecked(reference.current);
+                        }
 
                         onClose(false);
+
                     }} className="modal-button-close">Cerrar</button>
                     <button
                         onClick={ () => {
